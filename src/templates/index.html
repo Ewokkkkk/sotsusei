@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <title>home</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+  <link rel="stylesheet" type="text/css" href="/assets/css/home.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+      <a id="logo-to-top" class="navbar-brand" href="/">title</a>
+      <form class="d-flex">
+        <input id="input-search-str" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button id="btn-search" class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a id="link-to-purchasehistory" class="nav-link active" aria-current="page" href="#">購入履歴一覧</a>
+          </li>
+          <li class="nav-item">
+            <a id="link-to-userinfo-page" class="nav-link active" href="/accountinfo">会員情報管理</a>
+          </li>
+          <li class="nav-item">
+            <a id="link-to-address-page" class="nav-link active" href="editdelivery">配送先管理</a>
+          </li>
+          <li class="nav-item">
+            <a id="logo-to-cart" class="nav-link active" href="#">カート</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <article>
+    <div class="side">
+      <h4>ジャンルで調べる</h4>
+      <ul class="list">
+        <li id="list-products-1"><a href="#">アスパラガス</a></li>
+        <li id="list-products-2"><a href="#">枝豆</a></li>
+        <li id="list-products-3"><a href="#">かぼちゃ</a></li>
+        <li id="list-products-4"><a href="#">キャベツ</a></li>
+        <li id="list-products-5"><a href="#">きゅうり</a></li>
+        <li id="list-products-6"><a href="#">にんじん</a></li>
+        <li id="list-products-7"><a href="#">オクラ</a></li>
+      </ul>
+    </div>
+    <div class="main">
+      <h5>ウィッシュリスト</h5>
+      <div>
+        <ul class="slider">
+          <div id="img-btn-add-wishlist-1"><a href="#"><img src="/assets/img/tamanegi.jpg" alt=""></a></div>
+          <div id="img-btn-add-wishlist-1"><a href="#"><img src="/assets/img/tomato.jpg" alt=""></a></div>
+          <div id="img-btn-add-wishlist-1"><a href="#"><img src="/assets/img/nasu.jpg" alt=""></a></div>
+          <div id="img-btn-add-wishlist-1"><a href="#"><img src="/assets/img/pi-man.jpg" alt=""></a></div>
+          <div id="img-btn-add-wishlist-5"><a href="#"><img src="/assets/img/daikon.jpg" alt=""></a></div>
+          <div id="img-btn-add-wishlist-6"><a href="#"><img src="/assets/img/ninzin.jpg" alt=""></a></div>
+          <div id="img-btn-add-wishlist-7"><a href="#"><img src="/assets/img/kyu-ri.jpg" alt=""></a></div>
+        </ul>
+      </div>
+      <hr class="cp_hr01" />
+      <h5>最新商品</h5>
+      <div class="content2">
+        <ul>
+          <li id="img-btn-kyu-ri-product"><a href=""><img src="/assets/img/kyu-ri.jpg" alt="">
+              <h3>70円</h3>
+              <p>宮崎県産きゅうり</p>
+            </a></li>
+          <li id="img-btn-nasu-product"><a href=""><img src="/assets/img/nasu.jpg" alt="">
+              <h3>80円</h3>
+              <p>高知県産ナス</p>
+            </a></li>
+          <li id="img-btn-ninzin-product"><a href=""><img src="/assets/img/ninzin.jpg" alt="">
+              <h3>72円</h3>
+              <p>徳島県産にんじん</p>
+            </a></li>
+          <li id="img-btn-pi-man-product"><a href=""><img src="/assets/img/pi-man.jpg" alt="">
+              <h3>30円</h3>
+              <p>茨城県産ピーマン</p>
+            </a></li>
+          <li id="img-btn-tamanegi-product"><a href=""><img src="/assets/img/tamanegi.jpg" alt="">
+              <h3>63円</h3>
+              <p>北海道産玉ねぎ</p>
+            </a></li>
+          <li id="img-btn-tomato-product"><a href=""><img src="/assets/img/tomato.jpg" alt="">
+              <h3>140円</h3>
+              <p>熊本県産トマト</p>
+            </a></li>
+          <li id="img-btn-daikon-product"><a href=""><img src="/assets/img/daikon.jpg" alt="">
+              <h3>169円</h3>
+              <p>北海道産大根</p>
+            </a></li>
+        </ul>
+      </div>
+    </div>
+  </article>
+  <footer id="site-footer">
+    <nav id="fnav">
+      <ul id="fnav__menu">
+        <li id="link-to-about-us"><a href="#">about us</a></li>
+        <li id="link-to-contact-us"><a href="#">問い合わせ</a></li>
+      </ul>
+      <p class="cr">©copyright</p>
+    </nav>
+  </footer>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <script src="/assets/js/home.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] Loaded HTML Templates (15): 
+	- repasswordcomplete.html
+	- usermanagement.html
+	- 
+	- editinfo.html
+	- index.html
+	- loginaccount.html
+	- changepasswordemailcomplete.html
+	- editdelivery.html
+	- editpassword.html
+	- createaccount.html
+	- product.html
+	- accountcomplete.html
+	- changecomplete.html
+	- createaccountconfirm.html
+	- passwordcertification.html
+
+[GIN-debug] GET    /assets/*filepath         --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /assets/*filepath         --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] GET    /                         --> main.main.func1 (3 handlers)
+[GIN-debug] GET    /product                  --> main.main.func2 (3 handlers)
+[GIN-debug] GET    /passwordcertification    --> main.main.func3 (3 handlers)
+[GIN-debug] GET    /sendemail                --> main.main.func4 (3 handlers)
+[GIN-debug] GET    /signup                   --> main.main.func5 (3 handlers)
+[GIN-debug] POST   /signup                   --> main.main.func6 (3 handlers)
+[GIN-debug] GET    /signupconfirm            --> main.main.func7 (3 handlers)
+[GIN-debug] GET    /signupcomplete           --> main.main.func8 (3 handlers)
+[GIN-debug] GET    /editdelivery             --> main.main.func9 (3 handlers)
+[GIN-debug] GET    /editinfo                 --> main.main.func10 (3 handlers)
+[GIN-debug] GET    /editpassword             --> main.main.func11 (3 handlers)
+[GIN-debug] GET    /login                    --> main.main.func12 (3 handlers)
+[GIN-debug] POST   /login                    --> main.main.func13 (3 handlers)
+[GIN-debug] GET    /emailcertification       --> main.main.func14 (3 handlers)
+[GIN-debug] GET    /editpasswordcomplete     --> main.main.func15 (3 handlers)
+[GIN-debug] GET    /accountinfo              --> main.main.func16 (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :3000
+[GIN] 2022/01/03 - 14:41:17 | 200 |     26.3382ms |    192.168.96.5 | GET      "/signup"
+[GIN] 2022/01/03 - 14:41:17 | 404 |        18.4µs |    192.168.96.5 | GET      "/favicon.ico"
+{"time":"2022-01-03T14:41:44.4441578Z","level":"-","prefix":"-","file":"signUp.go","line":"12","message":"{UserId:0 PermissionId: FamilyName:岡本タクミ FirstName: FamilyNameRuby:オカモトタクミ FirstNameRuby: Password:test BirthYear:0 BirthMonth:3 BirthDay:9 Email:test@gmail.com Zipcode:2210012 PrefectureAddress:神奈川県 StreetAddress:子安台2-4-32-101 PhoneNumber:08044041139 CreatedDate:0001-01-01 00:00:00 +0000 UTC UpdatedDate:0001-01-01 00:00:00 +0000 UTC}\n"}
+{"time":"2022-01-03T14:41:44.5429189Z","level":"-","prefix":"-","file":"signUp.go","line":"15","message":"$2a$10$0bzt2deGCVGGuJ1nQrSr9uUlNKjaxxXhlSJlZeNfwjpABtZeM7wLK"}
+[GIN] 2022/01/03 - 14:41:44 | 302 |    140.9557ms |    192.168.96.5 | POST     "/signup"
+[GIN] 2022/01/03 - 14:41:44 | 200 |     16.4704ms |    192.168.96.5 | GET      "/"
+[GIN] 2022/01/03 - 14:41:44 | 304 |      9.8819ms |    192.168.96.5 | GET      "/assets/css/home.css"
+[GIN] 2022/01/03 - 14:41:44 | 304 |      9.0929ms |    192.168.96.5 | GET      "/assets/js/home.js"
+[GIN] 2022/01/03 - 14:41:44 | 200 |     29.3926ms |    192.168.96.5 | GET      "/assets/img/tamanegi.jpg"
+[GIN] 2022/01/03 - 14:41:44 | 200 |     28.9481ms |    192.168.96.5 | GET      "/assets/img/daikon.jpg"
+[GIN] 2022/01/03 - 14:41:44 | 200 |     27.4027ms |    192.168.96.5 | GET      "/assets/img/pi-man.jpg"
+[GIN] 2022/01/03 - 14:41:44 | 200 |     43.0807ms |    192.168.96.5 | GET      "/assets/img/tomato.jpg"
+[GIN] 2022/01/03 - 14:41:44 | 200 |     52.6127ms |    192.168.96.5 | GET      "/assets/img/nasu.jpg"
+[GIN] 2022/01/03 - 14:41:44 | 304 |     25.5935ms |    192.168.96.5 | GET      "/assets/img/ninzin.jpg"
+[GIN] 2022/01/03 - 14:41:44 | 200 |     26.7299ms |    192.168.96.5 | GET      "/assets/img/kyu-ri.jpg"

@@ -1,0 +1,67 @@
+version: '3'
+services:
+  golang:
+    container_name: "sotsusei_go"
+    tty: true
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./src:/go/src/sotsusei/src
+    ports:
+      - "3000"
+    depends_on:
+      - postgres
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_HOST: postgres
+      POSTGRES_DB: sotsusei_db
+
+  nginx:
+    container_name: "sotsusei_nginx"
+    build:
+      context: .
+      dockerfile: ./nginx/Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - "golang"
+
+  postgres:
+    container_name: "sotsusei_postgres"
+    image: postgres:latest
+    hostname: postgres
+    restart: always
+    user: root
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_HOST: postgres
+      POSTGRES_DB: sotsusei_db
+      TZ: "Asia/Tokyo"
+    ports:
+      - 5432:5432
+    volumes:
+      - ./postgres/init:/docker-entrypoint-initdb.d
+      - ./postgres/database:/var/lib/postgresql/data
+
+  pgadmin:
+    container_name: "sotsusei_pgadmin"
+    image: dpage/pgadmin4:6.3
+    hostname: pgadmin
+    restart: always
+    ports:
+      - 81:80
+    environment:
+      PGADMIN_DEFAULT_EMAIL: root@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    volumes:
+      - ./pgadmin:/var/lib/pgadmin/storage
+    depends_on:
+      - postgres
+volumes:
+  database:
+    driver: local

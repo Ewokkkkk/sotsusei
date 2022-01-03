@@ -1,0 +1,30 @@
+
+.btn-primary{
+    margin-left: 40%;
+    width: 100px;
+    height: 40px;
+}
+
+.form-wrapper{
+    margin-left: 20%;
+    margin-right: 20%;
+    border: solid;
+    padding: 10px;
+}
+
+h4{
+    margin-left: 40%;
+    padding-top: 20px;
+}
+
+.form-label{
+    font-weight: 600;
+    font-size:0.5cm;
+}
+
+.btn-success{
+    margin-left: 44%;
+    margin-top: 60px;
+    width: 100px;
+    height: 40px;
+}

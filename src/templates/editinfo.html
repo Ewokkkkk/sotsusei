@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="project">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/editinfo.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+  <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
+  <title>登録情報編集画面</title>
+</head>
+
+<body id="top">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">title</a>
+    </div>
+  </nav>
+  <h1>登録情報編集</h1>
+  <div class="form-wrapper">
+    <h5>登録情報を変更の方は以下の項目を編集してください</h5>
+    <form class="row g-3">
+      <div class="col-7">
+        <label for="input-zipcode-str" class="form-label">郵便番号</label>
+        <input type="tel" class="form-control" id="input-zipcode-str" required="required" placeholder="郵便番号">
+      </div>
+      <div class="col-10">
+        <label for="input-location-str" class="form-label">住所</label>
+        <input type="text" class="form-control" id="input-location-str" 　required="required" placeholder="住所">
+      </div>
+      <div class="col-10">
+        <label for="input-phonenumber-str" class="form-label">電話番号</label>
+        <input type="tel" class="form-control" name="input-phonenumber-str" id="input-phonenumber-str"
+          required="required" placeholder="電話番号">
+      </div>
+      <div class="col-10">
+        <label for="input-email-str" class="form-label">メールアドレス</label>
+        <input type="email" class="form-control" name="input-email-str" id="input-email-str" required="required"
+          placeholder="メールアドレス">
+      </div>
+      <div class="col-7">
+        <label for="input-name-str" class="form-label">氏名</label>
+        <input type="text" class="form-control" id="input-name-str" 　required="required" placeholder="氏名">
+      </div>
+      <div class="col-12">
+        <button type="submit" id="btn-submit" class="btn btn-primary">変更する</button>
+      </div>
+    </form>
+  </div>
+</body>
+
+</html>

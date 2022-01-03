@@ -1,0 +1,23 @@
+h5{
+    display: table;
+    background-color: red;
+    margin-left: 20%;
+    white-space: nowrap;
+}
+
+.form-label{
+    margin-top: 40px;
+}
+
+.form-wrapper{
+    margin-left: 30%;
+}
+
+.navbar{
+    margin-bottom: 80px;
+}
+
+.btn-primary{
+    margin-left: 25%;
+    margin-top: 40px;
+}

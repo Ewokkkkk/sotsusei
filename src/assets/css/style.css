@@ -1,0 +1,65 @@
+@charset "utf-8";
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td{margin:0;padding:0;}
+address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;}
+ul{list-style:none;}
+table{border-collapse:collapse;border-spacing:0;}
+caption,th{text-align:left;}
+q:before,q:after{content:'';}
+object,embed{vertical-align:top;}
+legend{display:none;}
+h1,h2,h3,h4,h5,h6{font-size:100%;}
+img,abbr,acronym,fieldset{border:0;}
+a{text-decoration: none;}
+
+body {
+    max-width:100%;
+  }
+ 
+ /* ヘッダー
+ ------------------------------------------------------------*/
+ 
+ ul > li > a{
+     padding: 10px 30px;
+     display: block;
+     font-size: 0.8em;
+     letter-spacing: .2em;
+ }
+
+ .navbar{
+    background-color: rgb(145, 248, 240);
+ }
+
+ /* フッター
+ ------------------------------------------------------------*/
+ 
+ .cr{
+    font-size: 12px;
+    padding-left: 45%;
+    width: 100%;
+    background-color: hsla(192, 92%, 33%, 0.459);
+    margin-left: 0;
+    position: absolute;
+    bottom:-1;
+}
+
+#fnav__menu{
+    display:flex;
+    padding-left: 20%;
+    white-space: nowrap;
+    background-color: #79f5eff3;
+    font-size: 18px;
+    margin-bottom: 0;
+}
+
+#fnav__menu li a{
+    text-decoration: none !important;
+    color: black;
+}
+
+#link-to-about-us{
+   padding-right: 50%;
+}
+
+.navbar-brand{
+    margin-left: 3%;
+}
