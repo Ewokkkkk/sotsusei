@@ -6,3 +6,7 @@
 .form-wrapper{
     margin-left: 20%;
 }
+
+#err_msg {
+    color: red;
+}

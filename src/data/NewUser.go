@@ -3,12 +3,10 @@ package data
 import "time"
 
 type NewUser struct {
-	UserId            int
+	// UserId            in
 	PermissionId      string
-	FamilyName        string `form:"name"`
-	FirstName         string
-	FamilyNameRuby    string `form:"name_ruby"`
-	FirstNameRuby     string
+	UserName          string    `form:"name"`
+	UserNameRuby      string    `form:"name_ruby"`
 	Password          string    `form:"password"`
 	BirthYear         int       `form:"birth_year"`
 	BirthMonth        int       `form:"birth_month"`
@@ -16,6 +14,7 @@ type NewUser struct {
 	Email             string    `form:"email"`
 	Zipcode           string    `form:"zipcode"`
 	PrefectureAddress string    `form:"prefecture"`
+	CityAddress       string    `form:"city"`
 	StreetAddress     string    `form:"street"`
 	PhoneNumber       string    `form:"phonenumber"`
 	CreatedDate       time.Time `json:created_date`

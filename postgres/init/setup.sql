@@ -1,6 +1,7 @@
 CREATE TABLE food_data (
 	food_id SERIAL PRIMARY KEY,
-	food_name varchar(30)
+	food_name varchar(30),
+	food_name_ruby varchar(30)
 );
 
 CREATE TABLE permission_data(
@@ -11,17 +12,16 @@ CREATE TABLE permission_data(
 CREATE TABLE users (
 	user_id SERIAL PRIMARY KEY,
 	permission_id varchar(1),
-	family_name varchar(30),
-	first_name varchar(30),
-	family_name_ruby varchar(30),
-	first_name_ruby varchar(30),
+	user_name varchar(30),
+	user_name_ruby varchar(30),
 	password varchar(128),
 	birth_year int,
 	birth_month int,
 	birth_day int,
-	email varchar(100),
+	email varchar(100) UNIQUE,
 	zipcode varchar(7),
 	prefecture_address varchar(50),
+	ciry_address varchar(50),
 	street_address varchar(80),
 	phone_number varchar(32),
 	created_date timestamp,
@@ -42,10 +42,8 @@ CREATE TABLE shipping_address (
 CREATE TABLE seller_data (
 	seller_id SERIAL PRIMARY KEY,
 	permission_id varchar(1),
-	family_name varchar(30),
-	first_name varchar(30),
-	family_name_ruby varchar(30),
-	first_name_ruby varchar(30),
+	seller_name varchar(30),
+	seller_name_ruby varchar(30),
 	seller_name varchar(30),
 	password varchar(32),
 	birth_year int,

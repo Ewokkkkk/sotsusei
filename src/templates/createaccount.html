@@ -24,6 +24,7 @@
   </nav>
   <div class="form-wrapper">
     <h3>アカウント作成画面</h3>
+    <div id="err_msg">{{ .err }}</div>
     <form class="row g-3" method="post" action="/signup">
       <div class="col-10">
         <label for="input-email-str" class="form-label">メールアドレス</label>
@@ -49,7 +50,7 @@
       </div>
       <div class="col-3">
         <label for="select-birth-year" class="form-label">生年月日</label>
-        <select name="select-birth-year" name="birth_year" id="birth_year" class="form-select" required="required">
+        <select name="birth_year" id="birth_year" class="form-select" required="required">
           <option value="年">年</option>
           <option value="1900">1900</option>
           <option value="1901">1901</option>

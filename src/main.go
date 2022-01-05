@@ -60,8 +60,9 @@ func main() {
 		if err != nil {
 			c.Status(http.StatusBadRequest)
 		} else {
-			if err := signUp(newUser); err != nil {
-				c.HTML(http.StatusBadRequest, "signup.html", gin.H{"err": err})
+			// emailが重複するかどうか
+			if err := db.SignUp(newUser); err != nil {
+				c.HTML(http.StatusBadRequest, "createaccount.html", gin.H{"err": "このメールアドレスはすでに登録されています。"})
 			}
 			c.Redirect(302, "/")
 		}
