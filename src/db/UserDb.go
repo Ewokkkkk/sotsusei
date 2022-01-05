@@ -7,10 +7,10 @@ import (
 //ユーザIdとパスワードをもとにユーザの情報を取得する
 func GetUser(email string) data.User {
 
-	db := GormConnect()
+	d := GormConnect()
 
 	var usr data.User
 
-	db.Find(&usr, "email=?", email)
+	d.Find(&usr, "email=?", email)
 	return usr
 }
