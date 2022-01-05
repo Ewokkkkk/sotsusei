@@ -27,36 +27,41 @@
     <form class="row g-3">
       <div class="col-7">
         <label for="str-name" class="form-label">氏名</label>
-        <input type="text" class="form-control" name="str-name" id="str-name" placeholder="名前" readonly>
+        <input type="text" class="form-control" name="str-name" id="str-name" placeholder="名前" readonly>{{ .UserName }}
       </div>
       <div class="col-7">
         <label for="str-pronuciation" class="form-label">フリガナ</label>
         <input type="text" class="form-control" name="str-pronuciation" id="str-pronuciation" placeholder="フリガナ"
-          readonly>
+          readonly>{{ .UserNameRuby}}
       </div>
       <div class="col-7">
         <label for="str-birthday" class="form-label">生年月日</label>
-        <input type="text" name="str-birthday" id="str-birthday" class="form-control" placeholder="生年月日" readonly>
+        <input type="text" name="str-birthday" id="str-birthday" class="form-control" placeholder="生年月日" readonly>{{
+        .BirthYear }}年{{ .BirthMonth }}月{{ .BirthDay }}日
       </div>
       <div class="col-7">
         <label for="str-zipcode" class="form-label">郵便番号</label>
         <input type="tel" class="form-control" name="str-zipcode" size="10" placeholder="郵便番号" maxlength="8" readonly
           onKeyUp="AjaxZip3.zip2addr(this,'','str-location','input-city-str');"
-          oninput="value = value.replace(/[０-９]/g,s => String.fromCharCode(s.charCodeAt(0) - 65248)).replace(/\D/g,'');">
+          oninput="value = value.replace(/[０-９]/g,s => String.fromCharCode(s.charCodeAt(0) - 65248)).replace(/\D/g,'');">{{
+        .Zipcode }}
       </div>
       <div class="col-10">
         <label for="str-location" class="form-label">住所</label>
-        <input type="text" class="form-control" name="str-location" size="20" placeholder="住所" readonly>
+        <input type="text" class="form-control" name="str-location" size="20" placeholder="住所" readonly>{{
+        .PrefectureAddress }}{{ .CityAddress }}{{ .StreetAddress }}
       </div>
       <div class="col-7">
         <label for="str-phonenumber" class="form-label">電話番号</label>
         <input type="tel" class="form-control" name="str-phonenumber" id="str-phonenumber" required="required"
           placeholder="電話番号" readonly
-          oninput="value = value.replace(/[０-９]/g,s => String.fromCharCode(s.charCodeAt(0) - 65248)).replace(/\D/g,'');">
+          oninput="value = value.replace(/[０-９]/g,s => String.fromCharCode(s.charCodeAt(0) - 65248)).replace(/\D/g,'');">{{
+        .PhoneNumber }}
       </div>
       <div class="col-10">
         <label for="str-email" class="form-label">メールアドレス</label>
-        <input type="email" class="form-control" id="str-email" required="required" placeholder="メールアドレス" readonly>
+        <input type="email" class="form-control" id="str-email" required="required" placeholder="メールアドレス" readonly>{{
+        .Email}}
       </div>
       <div class="captcha">CAPTCHA</div>
       <div class="col-6">

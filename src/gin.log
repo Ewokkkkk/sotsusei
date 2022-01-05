@@ -5,21 +5,21 @@
  - using code:	gin.SetMode(gin.ReleaseMode)
 
 [GIN-debug] Loaded HTML Templates (15): 
-	- editinfo.html
-	- index.html
-	- loginaccount.html
-	- passwordcertification.html
-	- repasswordcomplete.html
-	- 
-	- changecomplete.html
-	- changepasswordemailcomplete.html
-	- createaccount.html
-	- createaccountconfirm.html
-	- accountcomplete.html
-	- editdelivery.html
-	- editpassword.html
 	- product.html
 	- usermanagement.html
+	- createaccountconfirm.html
+	- editpassword.html
+	- loginaccount.html
+	- passwordcertification.html
+	- 
+	- editdelivery.html
+	- editinfo.html
+	- changecomplete.html
+	- createaccount.html
+	- index.html
+	- repasswordcomplete.html
+	- accountcomplete.html
+	- changepasswordemailcomplete.html
 
 [GIN-debug] GET    /assets/*filepath         --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
 [GIN-debug] HEAD   /assets/*filepath         --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
@@ -42,6 +42,13 @@
 [GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
 Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
 [GIN-debug] Listening and serving HTTP on :3000
-{"time":"2022-01-05T02:39:03.8418372Z","level":"-","prefix":"-","file":"signUp.go","line":"12","message":"{PermissionId: UserName:岡本拓実 UserNameRuby:オカモトタクミ Password:test BirthYear:1999 BirthMonth:3 BirthDay:9 Email:test6a5aaaaa3@gmail.com Zipcode:2210012 PrefectureAddress:神奈川県 CityAddress:横浜市神奈川区 StreetAddress:子安台2-4-32-101 PhoneNumber:08044041139 CreatedDate:0001-01-01 00:00:00 +0000 UTC UpdatedDate:0001-01-01 00:00:00 +0000 UTC}\n"}
-[GIN] 2022/01/05 - 02:39:03 | 302 |    135.3607ms |   192.168.128.5 | POST     "/signup"
-[GIN] 2022/01/05 - 02:39:04 | 200 |     14.3779ms |   192.168.128.5 | GET      "/"
+{"time":"2022-01-05T05:02:35.989348Z","level":"-","prefix":"-","file":"signUp.go","line":"12","message":"{PermissionId: UserName:test UserNameRuby:test Password:test BirthYear:1902 BirthMonth:3 BirthDay:4 Email:teaaaaaasafst@gmail.com Zipcode:3213211 PrefectureAddress:test CityAddress:tests StreetAddress:tsetes PhoneNumber:32132113211 CreatedDate:0001-01-01 00:00:00 +0000 UTC UpdatedDate:0001-01-01 00:00:00 +0000 UTC}\n"}
+[GIN] 2022/01/05 - 05:02:36 | 200 |      54.649ms |   192.168.128.5 | POST     "/signup"
+[GIN] 2022/01/05 - 05:02:36 | 200 |     23.7683ms |   192.168.128.5 | GET      "/assets/css/style.css"
+[GIN] 2022/01/05 - 05:02:36 | 200 |      8.1901ms |   192.168.128.5 | GET      "/assets/css/accountcompleteconfilm.css"
+[GIN] 2022/01/05 - 05:02:36 | 404 |        20.6µs |   192.168.128.5 | GET      "/favicon.ico"
+{"time":"2022-01-05T05:11:06.1827765Z","level":"-","prefix":"-","file":"signUp.go","line":"12","message":"{PermissionId: UserName:test UserNameRuby:test Password:test BirthYear:1902 BirthMonth:3 BirthDay:4 Email:teaaaaaasafst@gmail.com Zipcode:3213211 PrefectureAddress:test CityAddress:tests StreetAddress:tsetes PhoneNumber:32132113211 CreatedDate:0001-01-01 00:00:00 +0000 UTC UpdatedDate:0001-01-01 00:00:00 +0000 UTC}\n"}
+[GIN] 2022/01/05 - 05:11:06 | 200 |     67.1822ms |   192.168.128.5 | POST     "/signup"
+[GIN] 2022/01/05 - 05:11:06 | 200 |     12.4424ms |   192.168.128.5 | GET      "/assets/css/style.css"
+[GIN] 2022/01/05 - 05:11:06 | 200 |     13.4221ms |   192.168.128.5 | GET      "/assets/css/accountcompleteconfilm.css"
+[GIN] 2022/01/05 - 05:11:06 | 404 |          17µs |   192.168.128.5 | GET      "/favicon.ico"
