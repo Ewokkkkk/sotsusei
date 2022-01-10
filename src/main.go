@@ -69,13 +69,24 @@ func main() {
 	})
 
 	// 会員登録確認画面
-	router.GET("/signupconfirm", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "createaccountconfirm.html", nil)
-	})
+	// router.GET("/signupconfirm", func(c *gin.Context) {
+	// 	c.HTML(http.StatusOK, "createaccountconfirm.html", nil)
+	// })
 
 	// 会員登録完了画面
 	router.GET("/signupcomplete", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "accountcomplete.html", nil)
+	})
+
+	router.POST("/signupcomplete", func(c *gin.Context) {
+		var newUser data.NewUser
+		err := c.Bind(&newUser)
+		if err != nil {
+			c.Status(http.StatusBadRequest)
+		} else {
+			log.Printf("%+v\n", newUser)
+			c.HTML(http.StatusOK, "accountcomplete.html", newUser)
+		}
 	})
 
 	// お届け先編集画面

@@ -6,7 +6,7 @@
   <meta name="description" content="project">
   <meta name="viewport" content="width=device-width">
   <link rel="stylesheet" href="/assets/css/style.css">
-  <link rel="stylesheet" href="/assets/css/accountcompleteconfilm.css">
+  <link rel="stylesheet" href="/assets/createaccountconfirm.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
@@ -19,55 +19,67 @@
 <body id="top">
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">title</a>
+      <a class="navbar-brand" href="#"><img src="../img/logo4.png"></a>
     </div>
   </nav>
   <div class="form-wrapper">
-    <h3>アカウント作成確認画面</h3>
-    <form class="row g-3">
-      <div class="col-7">
-        <label for="str-name" class="form-label">氏名</label>
-        <input type="text" class="form-control" name="str-name" id="str-name" placeholder="名前" readonly>{{ .UserName }}
-      </div>
-      <div class="col-7">
-        <label for="str-pronuciation" class="form-label">フリガナ</label>
-        <input type="text" class="form-control" name="str-pronuciation" id="str-pronuciation" placeholder="フリガナ"
-          readonly>{{ .UserNameRuby}}
-      </div>
-      <div class="col-7">
-        <label for="str-birthday" class="form-label">生年月日</label>
-        <input type="text" name="str-birthday" id="str-birthday" class="form-control" placeholder="生年月日" readonly>{{
-        .BirthYear }}年{{ .BirthMonth }}月{{ .BirthDay }}日
-      </div>
-      <div class="col-7">
-        <label for="str-zipcode" class="form-label">郵便番号</label>
-        <input type="tel" class="form-control" name="str-zipcode" size="10" placeholder="郵便番号" maxlength="8" readonly
-          onKeyUp="AjaxZip3.zip2addr(this,'','str-location','input-city-str');"
-          oninput="value = value.replace(/[０-９]/g,s => String.fromCharCode(s.charCodeAt(0) - 65248)).replace(/\D/g,'');">{{
-        .Zipcode }}
-      </div>
-      <div class="col-10">
-        <label for="str-location" class="form-label">住所</label>
-        <input type="text" class="form-control" name="str-location" size="20" placeholder="住所" readonly>{{
-        .PrefectureAddress }}{{ .CityAddress }}{{ .StreetAddress }}
-      </div>
-      <div class="col-7">
-        <label for="str-phonenumber" class="form-label">電話番号</label>
-        <input type="tel" class="form-control" name="str-phonenumber" id="str-phonenumber" required="required"
-          placeholder="電話番号" readonly
-          oninput="value = value.replace(/[０-９]/g,s => String.fromCharCode(s.charCodeAt(0) - 65248)).replace(/\D/g,'');">{{
-        .PhoneNumber }}
-      </div>
-      <div class="col-10">
-        <label for="str-email" class="form-label">メールアドレス</label>
-        <input type="email" class="form-control" id="str-email" required="required" placeholder="メールアドレス" readonly>{{
-        .Email}}
-      </div>
-      <div class="captcha">CAPTCHA</div>
-      <div class="col-6">
+    <form class="row g-3" method="post" action="/signupcomplete">
+      <h5>メールアドレス/パスワード</h5>
+      <table class="table table-bordered border-dark" style="table-layout:fixed;">
+        <tbody>
+          <tr>
+            <th class="table-primary border-dark" scope="row" style="width:200px;">メールアドレス</th>
+            <td style="width:400px;"><input type="hidden" name="email" value="{{.Email}}">{{.Email}}</td>
+          </tr>
+          <tr>
+            <th class="table-primary border-dark" scope="row">パスワード(セキュリティの都合により表示されません)</th>
+            <td><input type="hidden" name="password" value="{{.Password}}">****************</td>
+          </tr>
+        </tbody>
+      </table>
+      <h5>基本情報</h5>
+      <table class="table table-bordered border-dark" style="table-layout:fixed;">
+        <tbody>
+          <tr>
+            <th class="table-primary border-dark" scope="row" style="width:200px;">氏名</th>
+            <td style="width:400px;"><input type="hidden" name="name" value="{{.UserName}}">{{.UserName}}</td>
+          </tr>
+          <tr>
+            <th class="table-primary border-dark" scope="row">フリガナ</th>
+            <td><input type="hidden" name="name_ruby" value="{{.UserNameRuby}}">{{.UserNameRuby}}</td>
+          </tr>
+          <tr>
+            <th class="table-primary border-dark" scope="row">生年月日</th>
+            <td style="width:400px;"><input type="hidden" name="birth_year" value="{{.BirthYear}}">{{.BirthYear}}年
+              <input type="hidden" name="birth_month" value="{{.BirthMonth}}">{{.BirthMonth}}月
+              <input type="hidden" name="birth_day" value="{{.BirthDay}}">{{.BirthDay}}日
+            </td>
+          </tr>
+          <tr>
+            <th class="table-primary border-dark" scope="row">郵便番号</th>
+            <td><input type="hidden" name="zipcode" value="{{.Zipcode}}">{{.Zipcode}}</td>
+          </tr>
+          <th class="table-primary border-dark" scope="row">住所都道府県</th>
+          <td><input type="hidden" name="prefecture" value="{{.PrefectureAddress}}">{{.PrefectureAddress}}</td>
+          </tr>
+          <tr>
+            <th class="table-primary border-dark" scope="row">住所郡市区（島）</th>
+            <td style="width:400px;"><input type="hidden" name="city" value="{{.CityAddress}}">{{.CityAddress}}</td>
+          </tr>
+          <tr>
+            <th class="table-primary border-dark" scope="row">上記以降の住所</th>
+            <td><input type="hidden" name="streeet" value="{{.StreetAddress}}">{{.StreetAddress}}</td>
+          </tr>
+          <tr>
+            <th class="table-primary border-dark" scope="row">電話番号</th>
+            <td><input type="hidden" name="phonenumber" value="{{.PhoneNumber}}">{{.PhoneNumber}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="col-4 btn">
         <a role="button" id="back-to-product-page" class="btn btn-success" href="createaccount.html">編集</a>
       </div>
-      <div class="col-6">
+      <div class="col-4 btn">
         <button type="submit" id="btn-submit" class="btn btn-primary">確定</button>
       </div>
     </form>
