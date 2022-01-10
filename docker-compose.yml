@@ -59,7 +59,7 @@ services:
       PGADMIN_DEFAULT_EMAIL: root@gmail.com
       PGADMIN_DEFAULT_PASSWORD: root
     volumes:
-      - ./pgadmin:/var/lib/pgadmin/storage
+      - ./pgadmin:/var/lib/pgadmin4/storage
     depends_on:
       - postgres
 volumes:
