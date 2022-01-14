@@ -1,12 +1,26 @@
 .btn-primary{
-    margin-left: 30%;
+    margin-left: 12vw;
     margin-bottom: 30px;
 }
 
 .form-wrapper{
-    margin-left: 20%;
+    margin-left: 35vw;
+    margin-top: 50px;
 }
 
 #err_msg {
     color: red;
+    text-align:center;
+}
+
+label{
+    white-space: nowrap;
+}
+
+.marg{
+    width: 100%;
+}
+
+h3,h5{
+    text-align: center;
 }

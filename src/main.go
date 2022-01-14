@@ -63,8 +63,9 @@ func main() {
 			// emailが重複するかどうか
 			if db.IsDuplicate(newUser) {
 				c.HTML(http.StatusBadRequest, "createaccount.html", gin.H{"err": "このメールアドレスはすでに登録されています。"})
+			} else {
+				c.HTML(http.StatusOK, "createaccountconfirm.html", newUser)
 			}
-			c.HTML(http.StatusOK, "createaccountconfirm.html", newUser)
 		}
 	})
 
