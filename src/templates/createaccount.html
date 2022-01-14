@@ -12,6 +12,9 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+    crossorigin="anonymous"></script>
   <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
   <title>アカウント作成画面</title>
 </head>
@@ -19,39 +22,53 @@
 <body id="top">
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">title</a>
+      <a class="navbar-brand" href="/" alt=""><img src="/assets/img/logo3.png" alt=""></a>
     </div>
   </nav>
+  <h3 class="font-weight-bold">会員登録</h3>
+  <h5 class="font-weight-bold">以下の項目にご記入の上、「新規作成」ボタンを押してください</h5>
+  <div id="err_msg">{{ .err }}</div>
   <div class="form-wrapper">
-    <h3>アカウント作成画面</h3>
-    <div id="err_msg">{{ .err }}</div>
-    <form class="row g-3" method="post" action="/signup">
-      <div class="col-10">
+    <form class="row g-3 needs-validation" method="post" action="/signup" novalidate>
+      <div class="col-6">
         <label for="input-email-str" class="form-label">メールアドレス</label>
-        <input type="email" class="form-control" name="email" id="email" required="required" placeholder="メールアドレス">
+        <input type="email" class="form-control" name="email" id="email" required placeholder>
+        <span class="invalid-feedback">項目を入力してください</span>
       </div>
-      <div class="col-md-5">
-        <label for="input-password-str" class="form-label">パスワード</label>
-        <input type="password" class="form-control" name="password" id="password" required="required"
-          placeholder="パスワード">
+      <div class="marg"></div>
+      <div class="form-group col-6">
+        <label for="input-password-str" class="col-md-5 col-form-label text-md-right">パスワード</label>
+        <div>
+          <input type="password" class="form-control" name="password" id="password" required oninput="checkPassword()">
+          <span class="invalid-feedback">項目を入力してください</span>
+        </div>
       </div>
-      <div class="col-md-5">
-        <label for="input-password-check-str" class="form-label">パスワード確認</label>
-        <input type="password" class="form-control" name="password_confirm" id="password_confirm" required="required"
-          placeholder="パスワード確認">
+      <div class="marg"></div>
+      <div class="form-group col-6">
+        <label for="password_confirm" class="col-md-5 col-form-label text-right">パスワード（確認）</label>
+        <div>
+          <input type="password" class="form-control" name="password_confirm" id="password_confirm" required
+            oninput="checkPassword()">
+          <span id="confirmPasswordInvalidFeedback" class="invalid-feedback">項目を入力してください</span>
+        </div>
       </div>
-      <div class="col-sm-5">
+      <div class="marg"></div>
+      <div class="col-6">
         <label for="input-name-str" class="form-label">氏名</label>
-        <input type="text" class="form-control" name="name" id="name" required="required" placeholder="名前">
+        <input type="text" class="form-control" name="name" id="name" required>
+        <span class="invalid-feedback">項目を入力してください</span>
       </div>
-      <div class="col-sm-5">
+      <div class="marg"></div>
+      <div class="col-6">
         <label for="input-pronunciation-str" class="form-label">フリガナ</label>
-        <input type="text" class="form-control" name="name_ruby" id="name_ruby" required="required" placeholder="フリガナ">
+        <input type="text" class="form-control" name="name_ruby" id="name_ruby" required>
+        <span class="invalid-feedback">項目を入力してください</span>
       </div>
-      <div class="col-3">
+      <div class="marg"></div>
+      <div class="g-3 col-3">
         <label for="select-birth-year" class="form-label">生年月日</label>
-        <select name="birth_year" id="birth_year" class="form-select" required="required">
-          <option value="年">年</option>
+        <select size="1" name="birth_year" id="birth_year" class="form-select" required="required">
+          <option value="">西暦</option>
           <option value="1900">1900</option>
           <option value="1901">1901</option>
           <option value="1902">1902</option>
@@ -179,8 +196,8 @@
       </div>
       <div class="col-2">
         <label for="select-birth-month" class="form-label">　</label>
-        <select name="birth_month" id="birth_month" class="form-select" required="required">
-          <option value="月">月</option>
+        <select size="1" name="birth_month" id="birth_month" class="form-select" required>
+          <option value="">月</option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -197,8 +214,8 @@
       </div>
       <div class="col-2">
         <label for="select-birth-day" class="form-label">　</label>
-        <select name="birth_day" id="birth_day" class="form-select" required="required">
-          <option value="日">日</option>
+        <select size="1" name="birth_day" id="birth_day" class="form-select" required>
+          <option value="">日</option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -232,39 +249,81 @@
           <option value="31">31</option>
         </select>
       </div>
-      <div class="col-6">
+      <div class="marg"></div>
+      <div class="col-3">
         <label for="input-zipcode-num" class="form-label">郵便番号</label>
-        <input type="tel" class="form-control" name="zipcode" id="zipcode" size="10" placeholder="郵便番号"
-          required="required" maxlength="8"
-          onKeyUp="AjaxZip3.zip2addr(this,'','select-prefecture-str','input-city-str');"
+        <input type="tel" class="form-control" name="zipcode" id="zipcode" size="10" required="required" maxlength="8"
+          onKeyUp="AjaxZip3.zip2addr(this,'','prefecture','city');"
           oninput="value = value.replace(/[０-９]/g,s => String.fromCharCode(s.charCodeAt(0) - 65248)).replace(/\D/g,'');">
+        <span class="invalid-feedback">項目を入力してください</span>
       </div>
-      <div class="col-8">
-        <label for="select-prefecture-str" class="form-label">住所都道府県</label>
-        <input type="text" class="form-control" name="prefecture" id="prefecture" size="20" placeholder="都道府県"
-          required="required">
+      <div class="marg"></div>
+      <div class="col-6">
+        <label for="select-prefecture-str" class="form-label">住所(都道府県)</label>
+        <input type="text" class="form-control" name="prefecture" id="prefecture" size="20" required>
+        <span class="invalid-feedback">項目を入力してください</span>
       </div>
-      <div class="col-8">
-        <label for="input-city-str" class="form-label">住所郡市区</label>
-        <input type="text" class="form-control" name="city" id="city" size="40" placeholder="住所郡市区（島）"
-          required="required">
+      <div class="marg"></div>
+      <div class="col-6">
+        <label for="input-city-str" class="form-label">郡市区島</label>
+        <input type="text" class="form-control" name="city" id="city" size="40" required>
+        <span class="invalid-feedback">項目を入力してください</span>
       </div>
-      <div class="col-8">
+      <div class="marg"></div>
+      <div class="col-6">
         <label for="input-street-str" class="form-label">丁目以降</label>
-        <input type="text" class="form-control" name="street" id="street" required="required" placeholder="以降の住所入力フォーム"
-          size="40" required="required">
+        <input type="text" class="form-control" name="street" id="street" required size="40" required>
+        <span class="invalid-feedback">項目を入力してください</span>
       </div>
-      <div class="col-8">
-        <label for="input-phonenumber-str" class="form-label">電話番号</label>
-        <input type="tel" class="form-control" name="phonenumber" id="phonenumber" required="required"
-          placeholder="電話番号" required="required"
+      <div class="marg"></div>
+      <div class="col-6">
+        <label for="input-phonenumber-str" class="form-label">電話番号(ハイフンなし)</label>
+        <input type="tel" class="form-control" name="phonenumber" id="phonenumber" required required
           oninput="value = value.replace(/[０-９]/g,s => String.fromCharCode(s.charCodeAt(0) - 65248)).replace(/\D/g,'');">
+        <span class="invalid-feedback">項目を入力してください</span>
       </div>
+      <div class="marg"></div>
       <div class="col-12">
         <button type="submit" id="btn-submit-registration" class="btn btn-primary">新規作成</button>
       </div>
     </form>
   </div>
+  <script>
+    (function () {
+
+      'use strict';
+      window.addEventListener('load', function () {
+        var forms = document.getElementsByClassName('needs-validation');
+        var validation = Array.prototype.filter.call(forms, function (form) {
+          form.addEventListener('submit', function (event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+      }, false);
+    })();
+
+    function checkPassword() {
+      const inputPassword = document.getElementById('password').value;
+      const confirmPasswordText = document.getElementById('password_confirm').value;
+
+      if (!confirmPasswordText) {
+        document.getElementById('password_confirm').setCustomValidity('項目を入力してください');
+        document.getElementById('confirmPasswordInvalidFeedback').innerHTML = '項目を入力してください';
+        return;
+      }
+
+      if (inputPassword !== confirmPasswordText) {
+        document.getElementById('password_confirm').setCustomValidity('パスワード不一致');
+        document.getElementById('confirmPasswordInvalidFeedback').innerHTML = 'パスワード不一致.';
+      } else {
+        document.getElementById('password_confirm').setCustomValidity('');
+      }
+    }
+  </script>
 </body>
 
 </html>
