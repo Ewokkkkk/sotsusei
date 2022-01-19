@@ -29,6 +29,23 @@ func main() {
 		c.HTML(http.StatusOK, "index.html", nil)
 	})
 
+	// 検索結果画面
+	router.GET("/search", func(c *gin.Context) {
+		name := c.Query("name")
+		cat := c.Query("category")
+
+		if name == "" && cat != "" {
+			// nameで検索
+
+		} else if name != "" && cat == "" {
+			// categoryで検索
+
+		} else {
+			// その他はトップに戻る
+			c.Redirect(http.StatusMovedPermanently, "/")
+		}
+	})
+
 	// 商品ページ
 	router.GET("/product", func(c *gin.Context) {
 		id := c.Query("id")
@@ -36,6 +53,9 @@ func main() {
 			c.Redirect(http.StatusMovedPermanently, "/")
 		}
 		product := db.GetProduct(id)
+		product.FoodName = db.GetFood(product.FoodId)
+		log.Printf(string(product.FoodId))
+		log.Printf(product.FoodName)
 		product.DeadlineStr = product.Deadline.Format("2006年01月02日")
 		c.HTML(http.StatusOK, "product.html", product)
 	})
