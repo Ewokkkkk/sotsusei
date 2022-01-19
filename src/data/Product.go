@@ -16,6 +16,7 @@ type Product struct {
 	ProductStock       string    `json:product_stock`
 	ProductDescription string    `json:product_description`
 	Deadline           time.Time `json:deadline`
+	DeadlineStr        string
 	CreatedDate        time.Time `json:created_date`
 	UpdatedDate        time.Time `json:updated_date`
 }

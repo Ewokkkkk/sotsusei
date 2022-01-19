@@ -36,6 +36,7 @@ func main() {
 			c.Redirect(http.StatusMovedPermanently, "/")
 		}
 		product := db.GetProduct(id)
+		product.DeadlineStr = product.Deadline.Format("2006年01月02日")
 		c.HTML(http.StatusOK, "product.html", product)
 	})
 
