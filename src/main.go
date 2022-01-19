@@ -35,7 +35,8 @@ func main() {
 		if id == "" {
 			c.Redirect(http.StatusMovedPermanently, "/")
 		}
-		c.HTML(http.StatusOK, "product.html", id)
+		product := db.GetProduct(id)
+		c.HTML(http.StatusOK, "product.html", product)
 	})
 
 	// パスワード認証画面
@@ -85,8 +86,12 @@ func main() {
 		if err != nil {
 			c.Status(http.StatusBadRequest)
 		} else {
+			// 会員登録処理
 			log.Printf("%+v\n", newUser)
 			c.HTML(http.StatusOK, "accountcomplete.html", newUser)
+			if err := db.SignUp(newUser); err != nil {
+				c.Status(http.StatusBadRequest)
+			}
 		}
 	})
 
