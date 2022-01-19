@@ -3,8 +3,9 @@ package data
 import "time"
 
 type Product struct {
-	ProductId       *int   `json:product_id`
-	FoodId          int    `json:food_id`
+	ProductId       *int `json:product_id`
+	FoodId          int  `json:food_id`
+	FoodName        string
 	SellerId        int    `json:seller_id`
 	ProductName     string `json:product_name`
 	ProductLocality string `json:product_locality`
