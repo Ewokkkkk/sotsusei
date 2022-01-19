@@ -132,6 +132,13 @@ func main() {
 		})
 	})
 
+	// ログアウト(画面なし)
+	router.GET("/logout", func(c *gin.Context) {
+
+		// ログアウト処理してトップに戻る
+		c.Redirect(http.StatusMovedPermanently, "/")
+	})
+
 	// email認証画面
 	router.GET("/emailcertification", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "passwordcertification.html", nil)

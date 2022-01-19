@@ -8,7 +8,7 @@ type Product struct {
 	SellerId        int    `json:seller_id`
 	ProductName     string `json:product_name`
 	ProductLocality string `json:product_locality`
-	ProductImg      string `json:product_img`
+	ProductImg1     string `json:product_img1`
 	ProductImg2     string `json:product_img2`
 	ProductImg3     string `json:product_img3`
 	// ProductImg         []string  `json:product_img, product_img2, product_img3`
