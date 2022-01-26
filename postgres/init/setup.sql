@@ -26,7 +26,7 @@ CREATE TABLE users (
     phone_number varchar(32),
     created_date timestamp,
     changed_date timestamp,
-    foreign key (permission_id) references permission_data on update no action
+    foreign key (permission_id) references permissions on update no action
 );
 
 CREATE TABLE shipping_addresses (
@@ -44,7 +44,6 @@ CREATE TABLE sellers (
     permission_id varchar(1),
     seller_name varchar(30),
     seller_name_ruby varchar(30),
-    seller_name varchar(30),
     password varchar(32),
     birth_year int,
     birth_month int,
@@ -56,7 +55,7 @@ CREATE TABLE sellers (
     phone_number varchar(32),
     created_date timestamp,
     changed_date timestamp,
-    foreign key (permission_id) references permission_data on update no action
+    foreign key (permission_id) references permissions on update no action
 );
 
 CREATE TABLE products(
@@ -74,8 +73,8 @@ CREATE TABLE products(
 	deadline timestamp,
 	created_date timestamp,
 	updated_date timestamp,
-	foreign key (food_id) references food_data on update no action,
-	foreign key (seller_id) references seller_data on update no action
+	foreign key (food_id) references foods on update no action,
+	foreign key (seller_id) references sellers on update no action
 );
 
 CREATE TABLE purchases(
@@ -98,9 +97,11 @@ CREATE TABLE orders(
 	product_id int,
 	quantity int,
 	subtotal int,
-	foreign key (product_id) references product_data on update no action,
-	foreign key (purchase_id) references purchase on update no action
+	foreign key (product_id) references products on update no action,
+	foreign key (purchase_id) references purchases on update no action
 );
+
+INSERT INTO public.sellers VALUES (1, '1', 'test', 'test', 'tes', 1111, 11, 11, 'TEST', '1111111', '1TEST', 'TEST', '11111111111', NULL, NULL);
 
 INSERT INTO foods
   (food_name, food_name_ruby)
@@ -204,3 +205,11 @@ VALUES
 
   ('わさび', 'ワサビ'),
   ('わらび', 'ワラビ');
+
+INSERT INTO public.products VALUES (1, 52, 1, 'にんじん2本セット(1本150g)', '三浦市〇〇農家', '/assets/img/ninzin.jpg', '/assets/img/ninzin.jpg', NULL, 50, 10, '少々形が悪くて出荷できなかったにんじんです。', '2021-12-30 00:00:00', NULL, NULL);
+INSERT INTO public.products VALUES (2, 49, 1, 'ナス2本セット', '三浦市〇〇農家', '/assets/img/nasu.jpg', '/assets/img/nasu.jpg', NULL, 80, 9, '少々形が悪くて出荷できなかったナスです。', '2021-12-30 00:00:00', NULL, NULL);
+INSERT INTO public.products VALUES (3, 23, 1, 'きゅうり3本セット', '三浦市〇〇農家', '/assets/img/kyu-ri.jpg', '/assets/img/kyu-ri.jpg', NULL, 70, 7, '少々形が悪くて出荷できなかったきゅうりです。', '2021-12-30 00:00:00', NULL, NULL);
+INSERT INTO public.products VALUES (4, 63, 1, 'ピーマン5つセット', '三浦市〇〇農家', '/assets/img/pi-man.jpg', '/assets/img/pi-man.jpg', NULL, 150, 5, '少々形が悪くて出荷できなかったピーマンです。', '2021-12-30 00:00:00', NULL, NULL);
+INSERT INTO public.products VALUES (5, 40, 1, '玉ねぎ2つ', '三浦市〇〇農家', '/assets/img/tamanegi.jpg', '/assets/img/tamanegi.jpg', NULL, 80, 10, '少々形が悪くて出荷できなかったたまねぎです。', '2021-12-30 00:00:00', NULL, NULL);
+INSERT INTO public.products VALUES (6, 47, 1, 'トマト3つセット', '三浦市〇〇農家', '/assets/img/tomato.jpg', '/assets/img/tomato.jpg', NULL, 150, 7, '少々形が悪くて出荷できなかったトマトです。', '2021-12-30 00:00:00', NULL, NULL);
+INSERT INTO public.products VALUES (7, 41, 1, 'だいこん1本250g', '三浦市〇〇農家', '/assets/img/daikon.jpg', '/assets/img/daikon.jpg', NULL, 160, 3, '少々形が悪くて出荷できなかった大根です。', '2021-12-30 00:00:00', NULL, NULL);

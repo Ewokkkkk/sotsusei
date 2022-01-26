@@ -75,7 +75,14 @@
       <h5>最新商品</h5>
       <div class="content2">
         <ul>
-          <li id="img-btn-kyu-ri-product"><a href=""><img src="/assets/img/kyu-ri.jpg" alt="">
+          {{range .}}
+          <li id=""><a href="/product?id={{.ProductId}}"><img src="{{.ProductImg1}}" alt="">
+              <h3>{{.ProductPrice}}円</h3>
+              <p>{{.ProductName}}</p>
+            </a></li>
+          {{end}}
+
+          <!-- <li id="img-btn-kyu-ri-product"><a href=""><img src="/assets/img/kyu-ri.jpg" alt="">
               <h3>70円</h3>
               <p>宮崎県産きゅうり</p>
             </a></li>
@@ -102,7 +109,7 @@
           <li id="img-btn-daikon-product"><a href=""><img src="/assets/img/daikon.jpg" alt="">
               <h3>169円</h3>
               <p>北海道産大根</p>
-            </a></li>
+            </a></li> -->
         </ul>
       </div>
     </div>
