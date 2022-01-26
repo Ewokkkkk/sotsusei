@@ -21,3 +21,17 @@ func GetFood(fid int) string {
 
 	return foodName
 }
+
+// トップページ用。最新6件の商品取得
+func GetLatestProducts() []data.Product {
+
+	d := GormConnect()
+
+	var products []data.Product
+	// var product data.Product
+
+	d.Limit(6).Order("product_id desc").Find(&products)
+	// fmt.Printf("%v\n", products)
+
+	return products
+}

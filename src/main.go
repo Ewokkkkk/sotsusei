@@ -26,7 +26,10 @@ func main() {
 
 	// トップページ
 	router.GET("/", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "index.html", nil)
+		products := db.GetLatestProducts()
+		// log.Printf("%+v\n", products)
+		log.Print(products[1])
+		c.HTML(http.StatusOK, "index.html", products)
 	})
 
 	// 検索結果画面
