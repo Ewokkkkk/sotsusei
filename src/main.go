@@ -128,8 +128,8 @@ func main() {
 				c.Status(http.StatusBadRequest)
 			}
 
-			c.SetCookie("loginUser", newUser.Email, 3600, "/", "localhost", false, false)
-			c.SetCookie("loginName", newUser.UserName, 3600, "/", "localhost", false, false)
+			c.SetCookie("loginUser", newUser.Email, 3600, "/", "http://176.32.64.51/", false, false)
+			c.SetCookie("loginName", newUser.UserName, 3600, "/", "http://176.32.64.51/", false, false)
 			c.HTML(http.StatusOK, "accountcomplete.html", newUser)
 
 		}
@@ -175,8 +175,8 @@ func main() {
 			// log.Print(session.Get("loginUser"))
 			u := db.GetUser(loginEmail)
 			loginName := u.UserName
-			c.SetCookie("loginUser", string(loginEmail), 3600, "/", "localhost", false, false)
-			c.SetCookie("loginName", string(loginName), 3600, "/", "localhost", false, false)
+			c.SetCookie("loginUser", string(loginEmail), 3600, "/", "http://176.32.64.51/", false, false)
+			c.SetCookie("loginName", string(loginName), 3600, "/", "http://176.32.64.51/", false, false)
 
 			c.Redirect(http.StatusMovedPermanently, "/")
 		}
@@ -189,8 +189,8 @@ func main() {
 
 		// session.Delete("loginUser")
 		// session.Save()
-		c.SetCookie("loginUser", "", -1, "/", "localhost", true, true)
-		c.SetCookie("loginName", "", -1, "/", "localhost", true, true)
+		c.SetCookie("loginUser", "", -1, "/", "http://176.32.64.51/", true, true)
+		c.SetCookie("loginName", "", -1, "/", "http://176.32.64.51/", true, true)
 
 		log.Print("logout")
 		// log.Print(session.Get("loginUser"))
