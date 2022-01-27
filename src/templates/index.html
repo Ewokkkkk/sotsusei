@@ -18,11 +18,17 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container-fluid">
-      <a id="logo-to-top" class="navbar-brand" href="/">title</a>
+      <a class="navbar-brand" href="/" alt=""><img src="/assets/img/logo3.png" alt=""></a>
       <form class="d-flex">
-        <input id="input-search-str" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button id="btn-search" class="btn btn-outline-success" type="submit">Search</button>
+        <div class="btn-group me-1" role="search" aria-label="search">
+          <input id="input-search-str" class="form-control me-2" type="search" placeholder="食材名で検索" aria-label="Search">
+        </div>
+        <div class="btn-group me-1" role="search" aria-label="search">
+          <button id="btn-search" class="btn btn-success" type="submit"
+            onclick="location.href='#'; return false;">検索</button>
+        </div>
       </form>
+
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -41,6 +47,19 @@
           <li class="nav-item">
             <a id="logo-to-cart" class="nav-link active" href="#">カート</a>
           </li>
+          <li id="login-msg" style="margin: auto;">ログイン中:<span id="login-name"></span>さん</li>
+          <form class="d-flex ms-1">
+            <div class="btn-group" role="login" aria-label="login">
+              <button id="btn-login" class="btn btn-primary" onclick="location.href='login'; return false;"
+                visibility='hidden'>ログイン</button>
+            </div>
+          </form>
+          <form class=" d-flex ms-1">
+            <div class="btn-group" role="logout" aria-label="logout">
+              <button id="btn-logout" class="btn btn-primary" onclick="location.href='logout'; return false;"
+                visibility='hidden'>ログアウト</button>
+            </div>
+          </form>
         </ul>
       </div>
     </div>
@@ -127,6 +146,43 @@
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
   <script src="/assets/js/home.js"></script>
+  <script>
+    var cookies = document.cookie;
+    var cookiesArray = cookies.split(';');
+    var mail = '';
+    var name = '';
+    for (var c of cookiesArray) {
+      var cArray = c.split('=');
+      if (cArray[0].trim() == 'loginUser') {
+        mail = decodeURI(cArray[1]);
+      } else if (cArray[0].trim() == 'loginName') {
+        name = decodeURI(cArray[1]);
+      }
+    }
+
+    console.log(mail);
+    console.log(name);
+
+    var login = document.getElementById('btn-login');
+    var logout = document.getElementById('btn-logout');
+    if (mail == '') {
+      login.style.display = 'inline-block';
+      logout.style.display = 'none';
+    } else {
+      login.style.display = 'none';
+      logout.style.display = 'inline-block';
+    }
+
+    if (name == '') {
+      document.getElementById('login-msg').style.display = 'none';
+      document.getElementById('login-name').innerHTML = "";
+
+    } else {
+      document.getElementById('login-msg').style.display = 'inline';
+      document.getElementById('login-name').innerHTML = name;
+
+    }
+  </script>
 </body>
 
 </html>
