@@ -9,6 +9,8 @@ import (
 
 	"golang.org/x/crypto/bcrypt"
 
+	"github.com/gin-contrib/sessions"
+	"github.com/gin-contrib/sessions/cookie"
 	"github.com/gin-gonic/gin"
 	"github.com/labstack/gommon/log"
 )
@@ -21,14 +23,22 @@ func main() {
 
 	router := gin.Default()
 
+	store := cookie.NewStore([]byte("secret"))
+	router.Use(sessions.Sessions("Session", store))
+
 	router.LoadHTMLGlob("templates/*")
 	router.Static("/assets", "assets")
 
 	// トップページ
 	router.GET("/", func(c *gin.Context) {
+		// session := sessions.Default(c)
+
+		// log.Print(session.Get("loginUser"))
+		user, _ := c.Cookie("loginUser")
+		log.Print(user)
 		products := db.GetLatestProducts()
 		// log.Printf("%+v\n", products)
-		log.Print(products[1])
+		// log.Print(products[1])
 		c.HTML(http.StatusOK, "index.html", products)
 	})
 
@@ -105,6 +115,8 @@ func main() {
 	})
 
 	router.POST("/signupcomplete", func(c *gin.Context) {
+		// session := sessions.Default(c)
+
 		var newUser data.NewUser
 		err := c.Bind(&newUser)
 		if err != nil {
@@ -112,10 +124,14 @@ func main() {
 		} else {
 			// 会員登録処理
 			log.Printf("%+v\n", newUser)
-			c.HTML(http.StatusOK, "accountcomplete.html", newUser)
 			if err := db.SignUp(newUser); err != nil {
 				c.Status(http.StatusBadRequest)
 			}
+
+			c.SetCookie("loginUser", newUser.Email, 3600, "/", "localhost", false, false)
+			c.SetCookie("loginName", newUser.UserName, 3600, "/", "localhost", false, false)
+			c.HTML(http.StatusOK, "accountcomplete.html", newUser)
+
 		}
 	})
 
@@ -139,28 +155,49 @@ func main() {
 		c.HTML(http.StatusOK, "loginaccount.html", nil)
 	})
 
-	router.POST("/login", func(ctx *gin.Context) {
+	router.POST("/login", func(c *gin.Context) {
 		logintext := ""
-		formPassword := ctx.PostForm("password")
-		dbPassword := db.GetUser(ctx.PostForm("email")).Password
-		log.Print(dbPassword)
+		formPassword := c.PostForm("password")
+		loginEmail := c.PostForm("email")
+		dbPassword := db.GetUser(loginEmail).Password
+		// log.Print(dbPassword)
+		// session := sessions.Default(c)
 
 		if err := bcrypt.CompareHashAndPassword([]byte(dbPassword), []byte(formPassword)); err != nil {
-			logintext = "ログイン失敗"
+			logintext = "ログインに失敗しました。"
+			c.HTML(http.StatusOK, "loginaccount.html", gin.H{
+				"text": logintext,
+			})
 		} else {
 			logintext = "ログイン成功"
+			// session.Set("loginUser", loginEmail)
+			// session.Save()
+			// log.Print(session.Get("loginUser"))
+			u := db.GetUser(loginEmail)
+			loginName := u.UserName
+			c.SetCookie("loginUser", string(loginEmail), 3600, "/", "localhost", false, false)
+			c.SetCookie("loginName", string(loginName), 3600, "/", "localhost", false, false)
+
+			c.Redirect(http.StatusMovedPermanently, "/")
 		}
 
-		ctx.HTML(http.StatusOK, "loginaccount.html", gin.H{
-			"text": logintext,
-		})
 	})
 
 	// ログアウト(画面なし)
 	router.GET("/logout", func(c *gin.Context) {
+		// session := sessions.Default(c)
+
+		// session.Delete("loginUser")
+		// session.Save()
+		c.SetCookie("loginUser", "", -1, "/", "localhost", true, true)
+		c.SetCookie("loginName", "", -1, "/", "localhost", true, true)
+
+		log.Print("logout")
+		// log.Print(session.Get("loginUser"))
 
 		// ログアウト処理してトップに戻る
-		c.Redirect(http.StatusMovedPermanently, "/")
+		c.HTML(http.StatusOK, "logout.html", nil)
+
 	})
 
 	// email認証画面
