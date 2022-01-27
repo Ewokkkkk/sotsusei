@@ -189,8 +189,8 @@ func main() {
 
 		// session.Delete("loginUser")
 		// session.Save()
-		c.SetCookie("loginUser", "", -1, "/", "http://176.32.64.51/", true, true)
-		c.SetCookie("loginName", "", -1, "/", "http://176.32.64.51/", true, true)
+		c.SetCookie("loginUser", "", -1, "/", "http://176.32.64.51/", false, false)
+		c.SetCookie("loginName", "", -1, "/", "http://176.32.64.51/", false, false)
 
 		log.Print("logout")
 		// log.Print(session.Get("loginUser"))
